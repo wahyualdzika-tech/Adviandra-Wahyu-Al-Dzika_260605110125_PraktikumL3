@@ -1,0 +1,92 @@
+import java.util.Scanner;
+
+public class AplikasiKalkulator {
+static Scanner input = new Scanner(System.in);
+    public static void main(String[] args) {
+        int pilihan = -1;
+        
+        while (pilihan != 0){
+            System.out.println("=======================");
+            System.out.println("  APLIKASI KALKULATOR  ");
+            System.out.println("=======================");
+            System.out.println("1. Hitung Faktorial");
+            System.out.println("2. Hitung Perpangkatan");
+            System.out.println("3. Perkalian Matriks");
+            System.out.println("0. Keluar");
+            System.out.print("Pilih: ");
+            pilihan = input.nextInt();
+            
+            switch (pilihan){
+                case 1:
+                    HitungFaktorial();
+                    break;
+                case 2:
+                    HitungPerpangkatan();
+                    break;
+                case 3:
+                    PerkalianMatriks();
+                    break;
+                case 0:
+                    System.out.println("terima kasih telah menggunakan aplikasi kalkulator");
+                    break;
+                default:
+                    System.out.println("ERROR!!!.");
+            }
+        }  
+    }
+    public static void HitungFaktorial() {
+        System.out.print("Masukan angka untuk menghitung faktorial: ");
+        int angka = input.nextInt();
+        int hasil = 1;
+        for (int i = angka; i > 0; i--){
+            hasil = hasil * i;
+        }
+        System.out.println("Faktorial dari " + angka + " adalah: " + hasil);
+    }
+    public static void HitungPerpangkatan() {
+        System.out.print("Masukkan angka: ");
+        int angka = input.nextInt();
+        System.out.print("Masukkan eksponen: ");
+        int eksponen = input.nextInt();
+        int hasil = 1;
+        for (int i = 0; i < eksponen; i++) {
+            hasil = hasil * angka;
+        }
+        System.out.println(angka + " pangkat " + eksponen + " adalah: " + hasil);
+    }
+    public static void PerkalianMatriks() {
+        int[][] matriksA = new int[2][2];
+        int[][] matriksB = new int[2][2];
+        int[][] matriksC = new int[2][2];
+
+        for (int i = 0; i < 2; i++) {
+            for (int j = 0; j < 2; j++) {
+                System.out.print("Masukkan matriks A baris ke-" + (i + 1) + " kolom " + (j + 1) + ": ");
+                matriksA[i][j] = input.nextInt();
+            }
+        }
+
+        for (int i = 0; i < 2; i++) {
+            for (int j = 0; j < 2; j++) {
+                System.out.print("Masukkan matriks B baris ke-" + (i + 1) + " kolom " + (j + 1) + ": ");
+                matriksB[i][j] = input.nextInt();
+            }
+        }
+
+        for (int i = 0; i < 2; i++) {
+            for (int j = 0; j < 2; j++) {
+                matriksC[i][j] = matriksA[i][0] * matriksB[0][j] + matriksA[i][1] * matriksB[1][j];
+            }
+        }
+
+        System.out.println("Hasil perkalian matriks A dan B:");
+        for (int i = 0; i < 2; i++) {
+            for (int j = 0; j < 2; j++) {
+                System.out.print(matriksC[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+}
+    
+
